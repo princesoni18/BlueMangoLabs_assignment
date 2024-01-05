@@ -5,5 +5,21 @@ sealed class HomeBlocEvent {}
 
 class PostsInitialfetchEvent extends HomeBlocEvent{}
 
-class PostSortByAbvEvent extends HomeBlocEvent{}
+class PostsFilterByAbvEvent extends HomeBlocEvent{
+  final RangeValues value;
+  final bool IsNew;
+
+  PostsFilterByAbvEvent( this.value,this.IsNew);
+
+}
+
+class PostFilterByIbuEvent extends HomeBlocEvent{
+
+  final RangeValues value;
+  final bool IsNew;
+
+  PostFilterByIbuEvent(this.value, this.IsNew);
+  
+}
+
 

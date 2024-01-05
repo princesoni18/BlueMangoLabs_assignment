@@ -30,11 +30,14 @@ environment:
 dependencies:
   bloc: ^8.1.2
   cupertino_icons: ^1.0.2
+  cupertino_range_slider_improved: ^2.0.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
   google_fonts: ^6.1.0
   http: ^1.0.0
+  lottie: ^2.6.0
+  range_slider_dialog: ^0.0.3
 
 dev_dependencies:
   flutter_lints: ^2.0.0

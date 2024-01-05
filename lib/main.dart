@@ -17,8 +17,7 @@ class MyApp extends StatelessWidget {
       title:"internship assignment",
       theme: ThemeData(
        textTheme:GoogleFonts.latoTextTheme(),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        //  useMaterial3: true,
       ),
       home: HomePage()
     );

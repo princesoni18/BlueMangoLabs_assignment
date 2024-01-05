@@ -22,14 +22,31 @@ final class PostLoadingState extends HomeBlocState{
 
 
 }
-final class PostSortByAbv extends HomeBlocState{
+final class PostsFilterByAbvState extends HomeBlocState{
 
   final List<Beers> posts;
 
-  PostSortByAbv({required this.posts});
+  PostsFilterByAbvState({required this.posts});
 
 }
 
-final class PostSorting extends HomeBlocState{
+final class PostsFiltering extends HomeBlocState{
+
+  final List<Beers> oldposts;
+  final bool IsFirstFetch;
+
+  PostsFiltering(this.oldposts,{this.IsFirstFetch=false});
   
 }
+
+final class PostActionState extends HomeBlocState{}
+
+final class PostFilteredByIbu extends HomeBlocState{
+
+  final List<Beers> posts;
+
+  PostFilteredByIbu(this.posts);
+
+
+}
+

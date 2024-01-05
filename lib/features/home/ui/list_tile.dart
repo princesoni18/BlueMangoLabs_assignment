@@ -1,3 +1,4 @@
+import 'package:dev_assignment/features/description_page/ui/description_page.dart';
 import 'package:dev_assignment/features/home/models/beer_model2.dart';
 import 'package:flutter/material.dart';
 
@@ -8,22 +9,37 @@ class ListElem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return GestureDetector(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionPage(beer: beer),)),
       child: Container(
-        height: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.black)
-        ),
-       
+        margin: EdgeInsets.symmetric(horizontal: 8,vertical: 5),
     
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(child: Image.network(beer.imageUrl,fit: BoxFit.contain,)),details(beer: beer)
+          height: 200,
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(10),
+    
+             boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade100, // Shadow color
+              spreadRadius: 3, // Spread radius
+              blurRadius: 3, // Blur radius
+              offset: Offset(0, 3), // Offset in x and y
+            ),
           ],
-        )
+          
+          ),
+         
+      
+          child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(child: Container(
+                padding: EdgeInsets.all(16),
+                child: Image.network(beer.imageUrl,fit: BoxFit.contain,))),details(beer: beer)
+            ],
+          )
+        
       ),
     );
   }
@@ -40,11 +56,14 @@ class details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[200],
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(topRight: Radius.circular(10),bottomRight: Radius.circular(10))
+      ),
+      
       padding: EdgeInsets.only(top: 15,left: 8,right: 8),
       width: MediaQuery.of(context).size.width*0.5,
       child: Column(
-    
         children: [
            
           Flexible(child: Text(beer.name,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,),overflow: TextOverflow.ellipsis,maxLines: 1,),
@@ -63,8 +82,9 @@ class details extends StatelessWidget {
           
 
           SizedBox(height: 10),
+          Text(beer.first_brewed)
 
-          ElevatedButton(onPressed: (){}, child: Text("view details"))
+         // ElevatedButton(onPressed: (){}, child: Text("view details"))
         ],
       ),
     );

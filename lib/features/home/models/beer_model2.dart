@@ -15,10 +15,10 @@ class Beers {
      String first_brewed;
      String description;
      String imageUrl;
-     double abv;
-     double ibu;
-     double target_fg;
-     double target_og;
+     double? abv;
+     double? ibu;
+     double? target_fg;
+     double? target_og;
     
     Ingredients ingredients;
    
@@ -46,20 +46,20 @@ class Beers {
     factory Beers.fromJson(Map<String, dynamic> json) => Beers(
         id: json["id"],
         name: json["name"],
-        tagline: json["tagline"],
-        first_brewed: json["first_brewed"],
-         description: json["description"],
-         imageUrl: json["image_url"],
-         abv: json["abv"].toDouble(),
-         ibu: json["ibu"].toDouble(),
-         target_fg: json["target_fg"].toDouble(),
-         target_og: json["target_og"].toDouble(),
+        tagline: json["tagline"]??"NA",
+        first_brewed: json["first_brewed"]??"",
+         description: json["description"]??"",
+         imageUrl: json["image_url"]??"https://live.staticflickr.com/4100/4917853457_4730ce2c8a_b.jpg",
+         abv: json["abv"]?.toDouble(),
+         ibu: json["ibu"]?.toDouble(),
+         target_fg: json["target_fg"]?.toDouble(),
+         target_og: json["target_og"]?.toDouble(),
           ingredients: Ingredients.fromJson(json["ingredients"]),
        
      
       
-         brewers_tips: json["brewers_tips"],
-         contributed_by: json["contributed_by"],
+         brewers_tips: json["brewers_tips"]??"",
+         contributed_by: json["contributed_by"]??"",
     );
 
    
@@ -67,7 +67,7 @@ class Beers {
 class Ingredients {
     List<Malt> malt;
     List<Hop> hops;
-    String yeast;
+    String? yeast="";
 
     Ingredients({
         required this.malt,
@@ -89,10 +89,10 @@ class Ingredients {
 }
 
 class Hop {
-    String name;
+    String name="";
     BoilVolume amount;
-    String add;
-    String attribute;
+    String add="";
+    String attribute="";
 
     Hop({
         required this.name,
@@ -102,10 +102,10 @@ class Hop {
     });
 
     factory Hop.fromJson(Map<String, dynamic> json) => Hop(
-        name: json["name"],
+        name: json["name"]??"",
         amount: BoilVolume.fromJson(json["amount"]),
-        add: json["add"],
-        attribute: json["attribute"],
+        add: json["add"]??"",
+        attribute: json["attribute"]??"",
     );
 
     Map<String, dynamic> toJson() => {
@@ -126,7 +126,7 @@ class Malt {
     });
 
     factory Malt.fromJson(Map<String, dynamic> json) => Malt(
-        name: json["name"],
+        name: json["name"]??"",
         amount: BoilVolume.fromJson(json["amount"]),
     );
 
@@ -145,8 +145,8 @@ class BoilVolume {
     });
 
     factory BoilVolume.fromJson(Map<String, dynamic> json) => BoilVolume(
-        value: json["value"]?.toDouble(),
-        unit: unitValues.map[json["unit"]]!,
+        value: json["value"].toDouble()??0.00,
+        unit: unitValues.map[json["unit"]]??Unit.LITRES,
     );
 
     Map<String, dynamic> toJson() => {
