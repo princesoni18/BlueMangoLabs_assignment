@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   final _controller = ScrollController();
 
 
-final TextEditingController _abvController=TextEditingController();
+
 
 
 
@@ -88,7 +88,8 @@ if(value==2){
   @override
   void dispose() {
     // TODO: implement dispose
-    _abvController.dispose();
+   
+    
     super.dispose();
   }
 
