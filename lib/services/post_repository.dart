@@ -24,9 +24,7 @@ class PostRepo{
      for(int i=0;i<posts.length;i++){
       
        Map<String,dynamic> mp=posts[i];
-       //print(mp['ingredients']);
-      //Welcome  beer= Welcome(id: mp['id'], name: mp['name'], tagline: mp['tagline']);
-
+     
       Beers beer =Beers.fromJson(mp);
 
     beers.add(beer);
@@ -71,8 +69,8 @@ class PostRepo{
      
      }
      catch(e){
-      print("eroooooooooooooor");
-      print(e.toString());
+     // print("eroooooooooooooor");
+      //print(e.toString());
       return [];     }
 
 
@@ -83,17 +81,19 @@ class PostRepo{
 
     const limit=15;
 
-     
-
-     var base="https://api.punkapi.com/v2/beers?page=$page&per_page=10&ibu_gt=${value.start}&ibu_lt=${value.end}";
+     int start=value.start.toInt();
+     int end=value.end.toInt();
+    print(start);
+     var base="https://api.punkapi.com/v2/beers?page=$page&per_page=10&ibu_gt=${start}&ibu_it=${end}";
 
      try{
       var response=await http.get(Uri.parse(base));
     
-      
      List <dynamic> posts=jsonDecode(response.body);
 
      List<Beers> beers=[];
+
+   
 
      for(int i=0;i<posts.length;i++){
       
@@ -109,8 +109,8 @@ class PostRepo{
      
      }
      catch(e){
-      print("eroooooooooooooor");
-      print(e.toString());
+      // print("eroooooooooooooor");
+      // print(e.toString());
       return [];     }
 
 

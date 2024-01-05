@@ -16,6 +16,8 @@ part 'home_bloc_state.dart';
 class HomeBlocBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
   int page=0;
   int pageForAbv=0;
+
+  int pageForIbu=0;
   HomeBlocBloc() : super(HomeBlocInitial()) {
     
     
@@ -119,8 +121,8 @@ class HomeBlocBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
        emit(PostsFiltering(filtered,IsFirstFetch: page==0?true:false));
     }
 
-       pageForAbv++;
-      List<Beers> newPosts= await PostRepo.fetchByIbu(pageForAbv, event.value);
+       pageForIbu++;
+      List<Beers> newPosts= await PostRepo.fetchByIbu(pageForIbu, event.value);
      if(event.IsNew==true){
 
       emit(PostsFilterByAbvState(posts: newPosts));

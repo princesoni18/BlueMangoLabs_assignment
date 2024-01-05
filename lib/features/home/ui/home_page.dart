@@ -33,11 +33,11 @@ if(value==3){
 }
 selectedValues=const RangeValues(1,40);
 if(value==2){
-  selectedValues=const RangeValues(1, 1150);
+  selectedValues=const RangeValues(1, 350);
 }
   await RangeSliderDialog.display<int>(context,
       minValue: 1,
-      maxValue: value==1?50:1150,
+      maxValue: value==1?50:350,
       acceptButtonText: 'Apply',
       cancelButtonText: 'Cancel',
       headerText: value==1?"Filter by Abv value":"Filter by Ibu value",
@@ -100,7 +100,7 @@ if(value==2){
            pop_UpMenu(),
           
         ],
-        title: const Text("Dev assignment"),
+        title: const Text("  Prince soni assignment"),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.grey[100],

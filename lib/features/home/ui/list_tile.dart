@@ -64,6 +64,7 @@ class details extends StatelessWidget {
       padding: EdgeInsets.only(top: 15,left: 8,right: 8),
       width: MediaQuery.of(context).size.width*0.5,
       child: Column(
+        
         children: [
            
           Flexible(child: Text(beer.name,style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,),overflow: TextOverflow.ellipsis,maxLines: 1,),
@@ -72,10 +73,12 @@ class details extends StatelessWidget {
           SizedBox(height: 5),
           Flexible(child: Text(beer.tagline,style: TextStyle(fontSize: 12),maxLines: 1,overflow: TextOverflow.ellipsis,)),
           SizedBox(height: 20),
-         
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [Text("abv ${beer.abv}"),Text("ibu ${beer.ibu}")],),
+         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+           Text("abv ${beer.abv}"),Text("ibu ${beer.ibu}"),
+         ],),
+        
 
 
 
